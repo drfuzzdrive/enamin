@@ -6,7 +6,6 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/drfuzzdrive/enamin.git'
-                echo 'Hello'
             }
         }
     }
