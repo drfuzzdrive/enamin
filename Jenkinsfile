@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/drfuzzdrive/enamin'
+                echo 'Hello!'
             }
         }
     }
