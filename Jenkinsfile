@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                echo 'Hello!'
+                sh 'docker build .'
             }
         }
     }
