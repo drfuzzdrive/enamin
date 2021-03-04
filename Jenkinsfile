@@ -6,8 +6,6 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/drfuzzdrive/enamin.git'
-            }
-            steps {
                 sh 'docker build .'
             }
         }
