@@ -1,0 +1,25 @@
+version: "3.9"
+services: 
+  nginx:
+    container_name: nginx
+    image: nginx:1.18.0-alpine 
+    ports: 
+      - "80:80"
+    volumes: 
+      - ./nginx/:/etc/nginx/conf.d/
+
+  tomcat1:
+    container_name: tomcat1
+    image: localhost:5000/tomcat
+
+  tomcat2:
+    container_name: tomcat2
+    image: localhost:5000/tomcat
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    volumes: 
+      - ./db:/var/lib/mysql:rw
+    environment: 
+      MYSQL_ROOT_PASSWORD: slojniparol
