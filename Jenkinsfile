@@ -1,8 +1,15 @@
 pipeline {
     agent any
-
+    
     stages {
-        stage('Build') {
+        stage('Build war') {
+            steps {
+                // Get some code from a GitHub repository
+                sh './initial/mvnw clean package'
+            }
+        }
+    stages {
+        stage('Build Docker Image') {
             steps {
                 // Get some code from a GitHub repository
                 sh 'docker build -t tomcat .'
