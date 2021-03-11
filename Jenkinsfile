@@ -5,7 +5,7 @@ pipeline {
         stage('Build war') {
             steps {
                 // Get some code from a GitHub repository
-                sh './initial/mvnw clean package'
+                sh 'initial/mvnw clean package'
             }
         }      
         stage('Build Docker Image') {
