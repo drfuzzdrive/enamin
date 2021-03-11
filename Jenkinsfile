@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build war') {
             steps {
-                // Get some code from a GitHub repository
+                sh 'chmod +x initial/mvnw'
                 sh 'initial/mvnw clean package'
             }
         }      
