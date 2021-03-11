@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Build war') {
             steps {
-                sh 'chmod +x ./initial/mvnw'
-                sh 'cd initial && ./mvnw clean package'
+                sh 'chmod +x ./mvnw'
+                sh './mvnw clean package'
             }
         }      
         stage('Build Docker Image') {
