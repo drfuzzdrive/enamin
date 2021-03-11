@@ -7,7 +7,7 @@ pipeline {
                 // Get some code from a GitHub repository
                 sh './initial/mvnw clean package'
             }
-                    
+        }      
         stage('Build Docker Image') {
             steps {
                 // Get some code from a GitHub repository
