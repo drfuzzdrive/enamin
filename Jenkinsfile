@@ -4,8 +4,9 @@ pipeline {
     stages {
         stage('Build war') {
             steps {
-                dir 'app'
-                sh 'mvn clean package'
+                dir (app) {
+                  sh 'mvn clean package'
+                }
             }
         }      
         stage('Build Docker Image') {
