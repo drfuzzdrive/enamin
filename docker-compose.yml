@@ -7,14 +7,21 @@ services:
       - "80:80"
     volumes: 
       - ./nginx/:/etc/nginx/conf.d/
+    networks:
+      - front
+      - back
 
   tomcat1:
     container_name: tomcat1
     image: localhost:5000/tomcat
+    networks:
+      - back
 
   tomcat2:
     container_name: tomcat2
     image: localhost:5000/tomcat
+    networks:
+      - back
 
   mysql:
     container_name: mysql
@@ -23,3 +30,9 @@ services:
       - ./db:/var/lib/mysql:rw
     environment: 
       MYSQL_ROOT_PASSWORD: slojniparol
+    networks:
+      - back
+
+networks:
+  front:
+  back:
