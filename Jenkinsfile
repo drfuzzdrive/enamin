@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Build war') {
             steps {
+                sh 'cd app'
                 sh 'mvn clean package'
             }
         }      
