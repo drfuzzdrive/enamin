@@ -30,7 +30,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: '7', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh 'docker login $registry -u $USER -p $PASS'
                     sh 'docker push registry.test:5000/tomcat'
-
+                }
             }
         }
     }
