@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Tag') {
             steps {
-                sh 'docker image tag tomcat ${registry}/tomcat:${BUILD_NUMBER}'
+                sh 'docker image tag tomcat ${REGISTRY}/tomcat:${BUILD_NUMBER}'
                //sh 'docker push registry.test:5000/tomcat'
             }
         }
