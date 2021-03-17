@@ -1,6 +1,6 @@
 pipeline {
       environment {
-    registry = "docker_hub_account/repository_name"
+    registry = "registry.test:5000"
     registryCredential = '7'
   }
 
