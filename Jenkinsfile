@@ -1,4 +1,9 @@
 pipeline {
+      environment {
+    registry = "docker_hub_account/repository_name"
+    registryCredential = '7'
+  }
+
     agent any
     
     stages {
@@ -18,10 +23,10 @@ pipeline {
             
         stage('Push to registry') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '7', passwordVariable: 'z', usernameVariable: 'ivan')]) {
+                //withCredentials([usernamePassword(credentialsId: '7', passwordVariable: 'z', usernameVariable: 'ivan')]) {
                 sh 'docker image tag tomcat registry.test:5000/tomcat'
                 sh 'docker push registry.test:5000/tomcat'
-                }
+                //}
             }
         }
     }
