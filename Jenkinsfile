@@ -30,8 +30,9 @@ pipeline {
         stage('Push to registry') {
             steps {
             script {
-                docker.withRegistry( '', registryCredential ) {
-                dockerImage.push()
+                withDockerRegistry([credentialsId: '7', url: "registry.test:5000"]) {
+                    def image = "registry.test:5000/tomcat"
+                    dockerImage.push()
                 }
             }
             }
