@@ -1,8 +1,8 @@
 pipeline {
-      environment {
-    registry = "registry.test:5000"
-    registryCredential = '7'
-  }
+    environment {
+        registry = "registry.test:5000"
+        registryCredential = '7'
+    }
 
     agent any
     
@@ -21,12 +21,15 @@ pipeline {
             }
         }
             
+
+                withCredentials([usernamePassword(credentialsId: '7', passwordVariable: 'password', usernameVariable: 'userName')]) {
         stage('Push to registry') {
             steps {
-                //withCredentials([usernamePassword(credentialsId: '7', passwordVariable: 'z', usernameVariable: 'ivan')]) {
+                    remote.user = userName
+                    remote.password = password
                 sh 'docker image tag tomcat registry.test:5000/tomcat'
                 sh 'docker push registry.test:5000/tomcat'
-                //}
+                }
             }
         }
     }
