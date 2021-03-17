@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "registry.test:5000"
+        REGISTRY = "registry.test:5000"
     }
 
     agent any
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Tag') {
             steps {
-                sh 'docker image tag tomcat ${registry}/tomcat'
+                sh 'docker image tag tomcat ${registry}/tomcat:${BUILD_NUMBER}'
                //sh 'docker push registry.test:5000/tomcat'
             }
         }
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: '7', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh 'docker login $registry -u $USER -p $PASS'
-                    sh 'docker push registry.test:5000/tomcat'
+                    sh 'docker push registry.test:5000/tomcat:${BUILD_NUMBER}'
                 }
             }
         }
