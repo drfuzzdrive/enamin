@@ -21,6 +21,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: '7', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
                 sh 'docker image tag tomcat registry.test:5000/tomcat'
                 sh 'docker push registry.test:5000/tomcat'
+                }
             }
         }
     }
