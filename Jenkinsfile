@@ -1,8 +1,6 @@
 pipeline {
     environment {
         registry = "registry.test:5000"
-        registryCredential = '7'
-        dockerImage = ''
     }
 
     agent any
@@ -29,12 +27,10 @@ pipeline {
         }
         stage('Push to registry') {
             steps {
-            script {
-                withDockerRegistry([credentialsId: '7', url: "registry.test:5000"]) {
-                    def image = "registry.test:5000/tomcat"
-                    dockerImage.push()
-                }
-            }
+                withCredentials([usernamePassword(credentialsId: '7', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh 'docker login $registry -u $USER -p $PASS'
+                    sh 'docker push registry.test:5000/tomcat'
+
             }
         }
     }
