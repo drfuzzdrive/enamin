@@ -18,7 +18,7 @@ pipeline {
             
         stage('Push to registry') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '7', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+                withCredentials([usernamePassword(credentialsId: '7', passwordVariable: 'z', usernameVariable: 'ivan')]) {
                 sh 'docker image tag tomcat registry.test:5000/tomcat'
                 sh 'docker push registry.test:5000/tomcat'
                 }
