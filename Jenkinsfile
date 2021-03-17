@@ -28,7 +28,7 @@ pipeline {
         stage('Push to registry') {
             steps {
                 withCredentials([usernamePassword(credentialsId: '7', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh 'docker login $registry -u $USER --password-stdin $PASS'
+                    sh 'echo $PASS | docker login $registry -u $USER --password-stdin'
                     sh 'docker push ${REGISTRY}/tomcat:${BUILD_NUMBER}'
                 }
             }
