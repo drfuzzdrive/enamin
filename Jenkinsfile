@@ -19,8 +19,8 @@ pipeline {
         stage('Push to registry') {
             steps {
                 // Get some code from a GitHub repository
-                sh 'docker image tag tomcat localhost:5000/tomcat'
-                sh 'docker push localhost:5000/tomcat'
+                sh 'docker image tag tomcat registry.test:5000/tomcat'
+                sh 'docker push registry.test:5000/tomcat'
             }
         }
     }
