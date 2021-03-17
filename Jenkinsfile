@@ -21,7 +21,7 @@ pipeline {
                 sh 'docker build -t tomcat .'
             }
         }
-        stage('Push to registry') {
+        stage('Tag') {
             steps {
                sh 'docker image tag tomcat registry.test:5000/tomcat'
                sh 'docker push registry.test:5000/tomcat'
