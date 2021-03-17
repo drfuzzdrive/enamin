@@ -2,6 +2,7 @@ pipeline {
     environment {
         registry = "registry.test:5000"
         registryCredential = '7'
+        dockerImage = ''
     }
 
     agent any
@@ -24,6 +25,13 @@ pipeline {
             steps {
                sh 'docker image tag tomcat registry.test:5000/tomcat'
                sh 'docker push registry.test:5000/tomcat'
+            }
+        }
+        stage('Push to registry') {
+            script {
+                docker.withRegistry( '', registryCredential ) {
+                dockerImage.push()
+                }
             }
         }
     }
